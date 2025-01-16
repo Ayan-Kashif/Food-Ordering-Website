@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000000;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar but keep scrolling enabled */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* for Internet Explorer */
+  scrollbar-width: none; /* for Firefox */
+  /* overflow-y: scroll; Ensure scrolling works */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+
+/* Custom Scrollbar */
+.smooth-scrollbar {
+  scrollbar-width: thin; 
+  scrollbar-color: #ea002a #1c1816; 
+}
+
+.smooth-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+/* Rounded corners *//* Thumb color */
+.smooth-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #1c1816; 
+  border-radius: 10px; 
+}
+
+.smooth-scrollbar::-webkit-scrollbar-track {
+  background-color: #1c1816; 
+}
+
+/* Input Field Customization */
+.email-input {
+  @apply block rounded-t-lg px-4 pb-2 pt-5 w-full text-sm text-gray-200 border-0 border-b-2 border-gray-500 appearance-none focus:outline-none focus:ring-0 focus:border-red-600;
+}
+
+/* Autofill Styling */
+.email-input:-webkit-autofill,
+.email-input:-webkit-autofill:hover,
+.email-input:-webkit-autofill:focus {
+  @apply text-white border-red-600;
+  -webkit-text-fill-color: white !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Autofill Box Shadow Styling */
+.email-input[type="email"]::-webkit-autofill {
+  @apply text-white border-red-600;
+  box-shadow: 0 0 0px 1000px #242120 inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Custom Ribbon Style */
+.ribbon {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 10px 50%, 0 0);
+}
+
+/* Truncate text in descriptions */
+.truncate-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limit to 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Thin Scrollbars for topdeals and bestselling */
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #333333 black;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: thin;
+}
+ /* This hides the scrollbar buttons (arrows) */
+ 
+.scrollbar-thin::-webkit-scrollbar-button {
+  display: none;
+}
+ .scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #333333;
+  border-radius: 8px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background-color: black;
+  border-radius: 8px;
+} 
+
+/* Ensure scrollbar is always visible */
+ ::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #333333;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+} 
+
+
+
+
+.image-group {
+  position: relative; /* Establishes a positioning context */
+  display: inline-block; /* Keeps the group tight */
+}
+
+
+
+.number {
+  position: absolute; /* Positions the number relative to the .image-group */
+  top: 50%; /* Adjust the vertical position */
+  left: 69.8%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Fine-tune centering */
+  background-color: rgba(0, 0, 0, 0.7); /* Optional: background for better visibility */
+  color: white; /* Text color */
+  padding: 5px 10px; /* Optional: padding around the number */
+  border-radius: 5px; /* Optional: rounded corners */
+  font-size: 18px; /* Adjust text size */
+  font-weight: bold; /* Make it bold */
+}
