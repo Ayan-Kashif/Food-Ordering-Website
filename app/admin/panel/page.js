@@ -1144,56 +1144,44 @@ const StaffPanel = () => {
   const [expandedInstructions, setExpandedInstructions] = useState(null);
   const [authChecked, setAuthChecked] = useState(false)
 
-  const checkAdminAuth = async () => {
-    const adminAuthToken = localStorage.getItem("adminAuthToken");
-     
-          
-            const handlePageLoad = () => {
-              setLoading(true);
-              // Simulate fetching data (for example, from API)
-              setTimeout(() => {
-                setLoading(false); // End loading after data is fetched
-              }, 2000); // Simulate a 2-second loading time
-            };
-          
-            useEffect(() => {
-              handlePageLoad();
-            }, []);
-
-    console.log("Admin Auth Token:", adminAuthToken); // Debugging line
-
-    if (!adminAuthToken) {
-      console.log("No token found, redirecting to login"); // Debugging line
-      router.push("/AdminLogin");
-      return;
-    }
-
-    try {
-      const response = await fetch("http://localhost:5173/admin/validate-token", {
-        headers: {
-          Authorization: `Bearer ${adminAuthToken}`,
-        },
-      });
-
-      const data = await response.json();
-      console.log("Token validation response:", data); // Debugging line
-
-      // Check if the message is "Authorized" instead of `data.success`
-      if (data.message === 'Authorized') {
-        setAuthChecked(true); // Auth is valid
-      } else {
-        router.push("/AdminLogin");
-      }
-    } catch (error) {
-      console.error("Error checking admin auth:", error);
-      router.push("/AdminLogin");
-    }
-  };
   useEffect(() => {
+    const checkAdminAuth = async () => {
+      setLoading(true);
+      const adminAuthToken = localStorage.getItem("adminAuthToken");
 
+      console.log("Admin Auth Token:", adminAuthToken); // Debugging line
+
+      if (!adminAuthToken) {
+        console.log("No token found, redirecting to login"); // Debugging line
+        router.push("/AdminLogin");
+        return;
+      }
+
+      try {
+        const response = await fetch("http://localhost:5173/admin/validate-token", {
+          headers: {
+            Authorization: `Bearer ${adminAuthToken}`,
+          },
+        });
+
+        const data = await response.json();
+        console.log("Token validation response:", data); // Debugging line
+
+        if (data.message === "Authorized") {
+          setAuthChecked(true);
+        } else {
+          router.push("/AdminLogin");
+        }
+      } catch (error) {
+        console.error("Error checking admin auth:", error);
+        router.push("/AdminLogin");
+      } finally {
+        setLoading(false);
+      }
+    };
 
     checkAdminAuth();
-  }, []);
+  }, [router]);
 
   const toggleInstructions = (orderId) => {
     setExpandedInstructions(expandedInstructions === orderId ? null : orderId);
