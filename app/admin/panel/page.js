@@ -1143,7 +1143,7 @@ const StaffPanel = () => {
   const [expandedOrder, setExpandedOrder] = useState(null)
   const [expandedInstructions, setExpandedInstructions] = useState(null);
   const [authChecked, setAuthChecked] = useState(false)
-const [loading, setLoading] = useState(false)
+
   const checkAdminAuth = async () => {
     const adminAuthToken = localStorage.getItem("adminAuthToken");
      
