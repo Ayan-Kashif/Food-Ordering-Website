@@ -295,16 +295,13 @@ const FeedbackForm = () => {
                       onClick={() => setIsOpen(!isOpen)}
                       className="w-full flex bg-[#242120] text-white px-4 py-4 rounded"
                     >
+{Array.from({ length: rating }).map((_, index) => (
+  <FaStar
+    key={index} // Correct key placement
+    className="text-yellow-500 cursor-pointer"
+  />
+))}
 
-                      {Array.from({ length: rating }, (_, index) => "⭐").map((star, index) => (
-                        <div className='flex'>  <FaStar
-                          key={index}
-                          className={`text-yellow-500 cursor-pointer 
-                                                                 
-                                                                 `} /></div>
-                        // You can also replace with an <img> tag if you prefer images.
-                      ))
-                      }
                     </button>
 
                     {/* Dropdown */}
