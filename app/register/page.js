@@ -93,7 +93,7 @@ const Register = () => {
         }
 
         try {
-            const response = await fetch("http://localhost:5173/register", {
+            const response = await fetch("http://82.29.153.135:5174//register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
