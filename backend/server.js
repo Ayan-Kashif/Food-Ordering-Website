@@ -15,7 +15,7 @@ const path = require('path');
 dotenv.config(); // Load environment variables from .env file
 
 const app = express();
-const port = 5173;
+const port = process.env.PORT || 5173;
 
 app.use(cors());
 app.use(bodyparser.json());
