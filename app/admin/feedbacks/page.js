@@ -114,20 +114,13 @@ const FeddbacksPage = () => {
                                     </div>
                                 </div>
                                 <div className="mb-3">
-                                <div className="flex mb-1">
-                                       {
-                                            Array.from({ length: feedback.rating }, (_, index) => "⭐").map((star, index) => (
-                                             <div className='flex'>  <FaStar
-                                             key={index}
-                                             className={`text-yellow-500 cursor-pointer 
-                                             
-                                             `}/></div>
-                                               // You can also replace with an <img> tag if you prefer images.
-                                            ))
-                                        }
-                                       </div>
-                                    <p className="text-gray-500">{feedback.createdAt.slice(0, 10)}</p>
-                                </div>
+                               <div className="flex mb-1">
+    {Array.from({ length: feedback.rating }).map((_, index) => (
+      <FaStar key={index} className="text-yellow-500 cursor-pointer" />
+    ))}
+  </div>
+  <p className="text-gray-500">{feedback.createdAt.slice(0, 10)}</p>
+</div>
                                 <p className="text-gray-900  text-sm mb-3">{feedback.feedback}</p>
                                 <p className=" text-yellow-600 text-sm">Order ID: #{feedback.orderId}</p>
                             </div>
