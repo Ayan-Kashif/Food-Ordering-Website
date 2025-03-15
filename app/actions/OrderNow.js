@@ -170,65 +170,159 @@
 
 
 
+// "use client";
+
+// import { useRouter } from "next/navigation";
+
+// const OrderNow = (e, setBucket, router,size) => {
+//   const cardData = e.target.closest(".card");
+//   if (!cardData) return;
+
+//   const prodName = cardData.querySelector(".name").innerText;
+//   const prodDesc = cardData.querySelector(".desc").innerText;
+//   const prodPrice = cardData.querySelector(".price").innerText;
+ 
+// // const sizeDropdown = cardData.querySelector(".size-dropdown"); // Find the select element
+// // const prodSize = sizeDropdown ? sizeDropdown.value : null; // Get the selected size
+// //     console.log(prodPrice,prodSize,sizeDropdown)
+//   const prodImage = cardData.querySelector("img").getAttribute("src");
+
+//   const existingBucket = JSON.parse(localStorage.getItem("bucket")) || [];
+//   console.log("Existing  Bucket is:",existingBucket)
+
+//   // const existingItemIndex = existingBucket.findIndex(
+//   //   (item) =>
+//   //     item.name === prodName &&
+//   //     item.desc === prodDesc &&
+//   //     item.price === prodPrice &&
+//   //     item.src === prodImage
+  
+//   // );
+//     // Check if the product already exists in the bucket (match by name and size)
+//   const existingItemIndex = existingBucket.findIndex((item) => {
+//     if (prodName.toLowerCase().includes("pizza")) {
+//       // For pizza, match by both name and size
+//       return item.name === prodName && item.size === size;
+//     } else {
+//       // For other items, match only by name
+//       return item.name === prodName && item.desc === prodDesc && item.price === prodPrice && item.src === prodImage;
+//     }
+//   });
+
+//   if (existingItemIndex !== -1) {
+//     existingBucket[existingItemIndex].qty += 1;
+//   } else {
+//     console.log("Existing Bucket Before Update:", existingBucket);
+
+
+//     existingBucket.push({
+//       name: prodName,
+//       desc: prodDesc,
+//       price: prodPrice,
+//       qty: 1,
+//       src: prodImage,
+//       size:size
+//      // Add size if it's a pizza 
+//     })
+//   }
+//   console.log("Existing Bucket After Update:", existingBucket);
+
+//   localStorage.setItem("bucket", JSON.stringify(existingBucket));
+//   console.log(existingBucket)
+//   setBucket([...existingBucket]); // Update state to trigger re-render
+
+//   const token = localStorage.getItem("authToken");
+
+//   if (!token) {
+//     router.push("/login");
+//     return;
+//   }
+
+//   const postData = async () => {
+//     await fetch("http://82.29.153.135:5174/", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: `Bearer ${token}`,
+//       },
+//       body: JSON.stringify({
+//         items: existingBucket,
+//       }),
+//     });
+//   };
+
+//   postData();
+//   router.push("/bucket");
+// };
+
+// export default OrderNow
+
+
+
+
+
+
+
+
+
+
 "use client";
 
 import { useRouter } from "next/navigation";
 
-const OrderNow = (e, setBucket, router,size) => {
+const OrderNow = (e, setBucket, router, size) => {
   const cardData = e.target.closest(".card");
   if (!cardData) return;
 
   const prodName = cardData.querySelector(".name").innerText;
   const prodDesc = cardData.querySelector(".desc").innerText;
   const prodPrice = cardData.querySelector(".price").innerText;
- 
-// const sizeDropdown = cardData.querySelector(".size-dropdown"); // Find the select element
-// const prodSize = sizeDropdown ? sizeDropdown.value : null; // Get the selected size
-//     console.log(prodPrice,prodSize,sizeDropdown)
   const prodImage = cardData.querySelector("img").getAttribute("src");
 
   const existingBucket = JSON.parse(localStorage.getItem("bucket")) || [];
-  console.log("Existing  Bucket is:",existingBucket)
+  console.log("Existing Bucket is:", existingBucket);
 
-  // const existingItemIndex = existingBucket.findIndex(
-  //   (item) =>
-  //     item.name === prodName &&
-  //     item.desc === prodDesc &&
-  //     item.price === prodPrice &&
-  //     item.src === prodImage
-  
-  // );
-    // Check if the product already exists in the bucket (match by name and size)
+  // Check if the product already exists in the bucket
   const existingItemIndex = existingBucket.findIndex((item) => {
     if (prodName.toLowerCase().includes("pizza")) {
       // For pizza, match by both name and size
       return item.name === prodName && item.size === size;
     } else {
-      // For other items, match only by name
-      return item.name === prodName && item.desc === prodDesc && item.price === prodPrice && item.src === prodImage;
+      // For other items, match only by name, desc, price, and src
+      return (
+        item.name === prodName &&
+        item.desc === prodDesc &&
+        item.price === prodPrice &&
+        item.src === prodImage
+      );
     }
   });
 
   if (existingItemIndex !== -1) {
+    // If item exists, update its quantity
     existingBucket[existingItemIndex].qty += 1;
   } else {
-    console.log("Existing Bucket Before Update:", existingBucket);
-
-
-    existingBucket.push({
+    // If item doesn't exist, add the new item
+    const newItem = {
       name: prodName,
       desc: prodDesc,
       price: prodPrice,
       qty: 1,
       src: prodImage,
-      size:size
-     // Add size if it's a pizza 
-    })
+    };
+
+    // Add size only for pizza items
+    if (prodName.toLowerCase().includes("pizza")) {
+      newItem.size = size;
+    }
+
+    existingBucket.push(newItem);
   }
+
   console.log("Existing Bucket After Update:", existingBucket);
 
+  // Save the updated bucket to localStorage
   localStorage.setItem("bucket", JSON.stringify(existingBucket));
-  console.log(existingBucket)
   setBucket([...existingBucket]); // Update state to trigger re-render
 
   const token = localStorage.getItem("authToken");
@@ -238,6 +332,7 @@ const OrderNow = (e, setBucket, router,size) => {
     return;
   }
 
+  // Send product data to the server
   const postData = async () => {
     await fetch("http://82.29.153.135:5174/", {
       method: "POST",
@@ -255,4 +350,4 @@ const OrderNow = (e, setBucket, router,size) => {
   router.push("/bucket");
 };
 
-export default OrderNow
+export default OrderNow;
