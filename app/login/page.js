@@ -381,7 +381,7 @@ const Login = () => {
     if (status === "authenticated" && session?.user) {
       const { email, name } = session.user;
 
-      fetch("http://localhost:5173/loginWithGoogle", {
+      fetch("http://82.29.153.135:5174/loginWithGoogle", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -408,7 +408,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5173/login", {
+      const response = await fetch("http://82.29.153.135:5174/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
