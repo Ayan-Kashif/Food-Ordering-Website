@@ -672,6 +672,57 @@ app.put("/admin-change-password", async (req, res) => {
 });
 
 
+app.get("/admin/stats", async (req, res) => {
+  try {
+      const totalUsers = await User.countDocuments();
+      const totalOrders = await OrderNow.countDocuments();
+      const totalRevenue = await OrderNow.aggregate([{ $group: { _id: null, total: { $sum: "$totalPrice" } } }]);
+      const recentOrders = await OrderNow.find().sort({ createdAt: -1 }).limit(5);
+      const recentUsers = await User.find().sort({ createdAt: -1 }).limit(5);
+
+      res.json({
+          totalUsers,
+          totalOrders,
+          totalRevenue: totalRevenue[0]?.total || 0,
+          recentOrders,
+          recentUsers,
+      });
+  } catch (error) {
+      console.error("Error fetching admin stats:", error);
+      res.status(500).json({ message: "Server error" });
+  }
+});
+
+
+
+app.get("/users", async (req, res) => {
+  try {
+    const users = await User.find(); // Fetch all users
+
+    // Fetch orders and group by userId
+    const orders = await OrderNow.aggregate([
+      { $group: { _id: "$userId", orderCount: { $sum: 1 } } }
+    ]);
+
+    // Convert orders to a lookup object
+    const orderMap = {};
+    orders.forEach(order => {
+      orderMap[order._id.toString()] = order.orderCount;
+    });
+
+    // Attach order count to users
+    const usersWithOrderCount = users.map(user => ({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      orderCount: orderMap[user._id.toString()] || 0 // Default to 0 if no orders
+    }));
+
+    res.json(usersWithOrderCount);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching users", error });
+  }
+});
 
 
 app.listen(port, () => {
