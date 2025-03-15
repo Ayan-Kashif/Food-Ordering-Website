@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { FaUser, FaKey, FaSignOutAlt, FaBars, FaHome, FaUsers, FaBullhorn } from "react-icons/fa";
 import { useContext } from "react"
+import AuthContext from '../../AuthContext'
 const AdminNavbar = () => {
   const router = useRouter();
   const pathname = usePathname();
