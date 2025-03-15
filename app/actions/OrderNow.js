@@ -239,7 +239,7 @@ const OrderNow = (e, setBucket, router,size) => {
   }
 
   const postData = async () => {
-    await fetch("http://localhost:5173/", {
+    await fetch("http://82.29.153.135:5174/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
