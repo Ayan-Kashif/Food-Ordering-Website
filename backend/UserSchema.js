@@ -15,6 +15,7 @@ const UserSchema = new Schema({
     password: { type: String },
     phone: { type: String},
     address: { type: String },
+     orders: [{ type: mongoose.Schema.Types.ObjectId, ref: "OrderNow" }] ,// Reference to Order model
   
 
 
