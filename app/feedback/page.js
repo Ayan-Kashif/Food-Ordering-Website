@@ -188,7 +188,7 @@ const FeedbackForm = () => {
     if (Date.now() <= visitDate) {
       toast.error("Please enter a valid date ")
     }
-    const response = await fetch("http://localhost:5173/feedback", {
+    const response = await fetch("http://82.29.153.135:5174/feedback", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ orderId, name, feedback, phone, email, channel, visitDate, rating }),
