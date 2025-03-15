@@ -1158,7 +1158,7 @@ const StaffPanel = () => {
       }
 
       try {
-        const response = await fetch("http://localhost:5173/admin/validate-token", {
+        const response = await fetch("http://82.29.153.135:5174/admin/validate-token", {
           headers: {
             Authorization: `Bearer ${adminAuthToken}`,
           },
@@ -1190,7 +1190,7 @@ const StaffPanel = () => {
   // Fetch orders function
   const fetchOrders = async () => {
     try {
-      const response = await fetch("http://localhost:5173/admin/orders/history");
+      const response = await fetch("http://82.29.153.135:5174/admin/orders/history");
       const data = await response.json();
       setOrders(data);
       setFilteredOrders(data);
@@ -1272,7 +1272,7 @@ const StaffPanel = () => {
 
   const updateOrderStatus = async (id, status) => {
     try {
-      const response = await fetch(`http://localhost:5173/admin/orders/${id}`, {
+      const response = await fetch(`http://82.29.153.135:5174/admin/orders/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
