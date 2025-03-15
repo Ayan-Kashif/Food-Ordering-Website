@@ -38,7 +38,7 @@ const FeddbacksPage = () => {
         }
 
         try {
-            const response = await fetch("http://localhost:5173/admin/validate-token", {
+            const response = await fetch("http://82.29.153.135:5174/admin/validate-token", {
                 headers: {
                     Authorization: `Bearer ${adminAuthToken}`,
                 },
