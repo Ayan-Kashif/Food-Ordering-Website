@@ -451,7 +451,7 @@ const Bucket = () => {
     };
 
     try {
-      const response = await fetch("http://82.29.153.135:5174/order', {
+      const response = await fetch("http://82.29.153.135:5174/order", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
