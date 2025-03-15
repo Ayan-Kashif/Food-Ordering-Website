@@ -624,6 +624,54 @@ app.get("/admin/validate-token", async (req, res) => {
   }
 });
 
+app.post("/admin-login", async (req, res) => {
+  const { username, password } = req.body;
+  console.log(username, password)
+
+  try {
+      const admin = await Admin.findOne({ username });
+      console.log(admin)
+      if (!admin) return res.status(401).json({ message: "Invalid credentials" });
+
+
+      // ✅ CORRECT: Compare plain password with hashed one
+      const isMatch = await bcrypt.compare(password, admin.password);
+      console.log("🔹 Password match result:", isMatch);
+      if (!isMatch) return res.status(401).json({ message: "Invalid credentials" });
+
+      const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET_KEY, { expiresIn: "1h" });
+      return res.status(200).json({ token, message: "Login successful" });
+  } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: "Server error" });
+  }
+});
+
+
+
+app.put("/admin-change-password", async (req, res) => {
+  const { oldPassword, newPassword } = req.body;
+
+
+  try {
+      const admin = await Admin.findOne();
+      if (!admin) return res.status(404).json({ message: "Admin not found" });
+
+      const isMatch = await bcrypt.compare(oldPassword, admin.password);
+      if (!isMatch) return res.status(400).json({ message: "Old password is incorrect" });
+
+      const salt = await bcrypt.genSalt(10);
+      admin.password = await bcrypt.hash(newPassword, salt);
+      await admin.save();
+
+      res.json({ message: "Password changed successfully" });
+  } catch (error) {
+      res.status(500).json({ message: "Server error" });
+  }
+});
+
+
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
