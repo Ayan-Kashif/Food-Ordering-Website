@@ -14,7 +14,7 @@ export default function UserPage() {
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch("http://localhost:5001/users");
+      const res = await fetch("http://82.29.153.135:5174/users");
       const data = await res.json();
       setUsers(data);
       setLoading(false);
