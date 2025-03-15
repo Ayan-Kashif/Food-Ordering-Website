@@ -3,6 +3,7 @@
 "use client";
 
 import React from "react";
+import Link from 'next/link'
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { FaUser, FaKey, FaSignOutAlt, FaBars, FaHome, FaUsers, FaBullhorn } from "react-icons/fa";
@@ -29,25 +30,25 @@ const AdminNavbar = () => {
   return (
     <nav className="bg-gray-800 border-gray-200 text-white dark:bg-gray-900 shadow-lg">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+        <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="/images.png" className="w-10 rounded-full" alt="Fundify Logo" />
           <span className="self-center font-playfair text-2xl font-semibold whitespace-nowrap dark:text-white">
-            Fundify
+            Lahori
           </span>
-        </a>
+        </Link>
 
         {/* Show only the Fundify name and logo on login or change-password pages */}
         {!isLoginOrChangePasswordPage && (
           <>
             <div className="flex md:order-2 space-x-4 md:space-x-0 rtl:space-x-reverse">
               {/* Change Password Link */}
-              <a
+              <Link
                 href="/admin/change-password"
                 className="flex mx-3 items-center text-white hover:text-yellow-200 transition-colors duration-300"
                 title="Change Password "
               >
                 <FaKey className="w-5 h-5" />
-              </a>
+              </Link>
 
               {/* Logout Button */}
               <button
@@ -82,34 +83,34 @@ const AdminNavbar = () => {
 
 
               <li>
-                  <a
+                  <Link
                     href="/admin/dashboard"
                     className="flex items-center py-2 px-3 md:p-0 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-200 md:dark:hover:text-yellow-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 transition-colors duration-300"
                   >
                     <FaHome className="mr-2" />
                     Dashboard
-                  </a>
+                  </Link>
                 </li>
 
                 
                 <li>
-                  <a
+                  <Link
                     href="/admin/panel"
                     className="flex items-center py-2 px-3 md:p-0 text-white md:hover:text-yellow-200 bg-blue-700 rounded-sm md:bg-transparent md:dark:text-blue-500 transition-colors duration-300"
                     aria-current="page"
                   >
                     <FaBullhorn className="mr-2" />
                    Orders
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/admin/users"
                     className="flex items-center py-2 px-3 md:p-0 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-200 md:dark:hover:text-yellow-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 transition-colors duration-300"
                   >
                     <FaUsers className="mr-2" />
                     Users
-                  </a>
+                  </Link>
                 </li>
                
               </ul>
