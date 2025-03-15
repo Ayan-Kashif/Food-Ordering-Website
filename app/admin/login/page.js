@@ -358,12 +358,12 @@ const AdminLogin = () => {
         setIsLoading(true);
 
         try {
-            const response = await fetch("http://82.29.153.135:5174/admin/login", {
+            const response = await fetch("http://82.29.153.135:5174/admin-login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({username:formData.username,password:formData.password}),
             });
             const data = await response.json();
 
