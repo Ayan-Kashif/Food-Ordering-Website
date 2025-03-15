@@ -12,7 +12,7 @@ const LahoriOrderHistory = () => {
         const fetchOrderHistory = async () => {
             try {
                 setLoading(true);
-                const response = await fetch("http://localhost:5173/admin/orders/history");
+                const response = await fetch("http://82.29.153.135:5174/admin/orders/history");
                 const data = await response.json();
                 setOrders(data);
                 setLoading(false);
