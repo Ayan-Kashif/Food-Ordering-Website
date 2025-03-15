@@ -164,7 +164,7 @@ const OrderHistory = () => {
 
     const fetchOrderHistory = async () => {
         try {
-            const response = await fetch("http://localhost:5173/order-history", {
+            const response = await fetch("http://82.29.153.135:5174/order-history", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ userId: CustomerId }), // Send userId in an object
