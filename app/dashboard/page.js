@@ -360,7 +360,7 @@ const Dashboard = () => {
         };
 
         try {
-            const response = await fetch("http://localhost:5173/updateDetails", {
+            const response = await fetch("http://82.29.153.135:5174/updateDetails", {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),
