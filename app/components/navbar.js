@@ -99,7 +99,7 @@ const Navbar = () => {
         if (userID) {
             const fetchUserData = async () => {
                 try {
-                    const response = await fetch("http://localhost:5173/user", {
+                    const response = await fetch("http://82.29.153.135:5174/user", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -133,7 +133,7 @@ const Navbar = () => {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await fetch("http://localhost:5173/GoogleUser", {
+                const response = await fetch("http://82.29.153.135:5174/GoogleUser", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
