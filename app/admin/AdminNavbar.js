@@ -85,25 +85,25 @@ const PrinNavbar = () => {
   return (
     <nav className="bg-gray-800 border-gray-200 text-white dark:bg-gray-900 shadow-lg">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+        <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
          
           <span className="self-center font-playfair text-2xl font-semibold whitespace-nowrap dark:text-white">
          LAHORI
           </span>
-        </a>
+        </Link>
 
         {/* Show only the Fundify name and logo on login or change-password pages */}
         {!isLoginOrChangePasswordPage && (
           <>
             <div className="flex md:order-2 space-x-4 md:space-x-0 rtl:space-x-reverse">
               {/* Change Password Link */}
-              <a
+              <Link
                 href="/admin/change-password"
                 className="flex mx-3 items-center text-white hover:text-yellow-200 transition-colors duration-300"
                 title="Change Password "
               >
                 <FaKey className="w-5 h-5" />
-              </a>
+              </Link>
 
               {/* Logout Button */}
               <button
