@@ -1153,7 +1153,7 @@ const StaffPanel = () => {
 
       if (!adminAuthToken) {
         console.log("No token found, redirecting to login"); // Debugging line
-        router.push("/AdminLogin");
+        router.push("/admin/login");
         return;
       }
 
