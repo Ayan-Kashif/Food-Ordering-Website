@@ -119,8 +119,7 @@ const Nav = () => {
     const [isOpen, setIsOpen] = useState(false);
        const [userData, setUserData] = useState({})
     const [isPopupVisible, setIsPopupVisible] = useState(false); // State to manage popup 
-    const data = localStorage.getItem("userData")
-    const userData = JSON.parse(data)
+
     const { data: session } = useSession();
     React.useEffect(() => {
         const body = document.body;
