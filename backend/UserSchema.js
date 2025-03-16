@@ -3,6 +3,11 @@ const { Schema, model } = mongoose;  // Destructure Schema and model
 
 const UserSchema = new Schema({
     name: { type: String, required: true },
+      createdAt: { 
+        type: Date, 
+        default: Date.now 
+      },  // Use Date object for createdAt
+      
     email: {
         type: String,
         required: true,
