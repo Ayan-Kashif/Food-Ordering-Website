@@ -459,7 +459,7 @@ const Login = () => {
       <>
       <ToastContainer position="top-right" theme="light" />
       <div className="main-container flex xs:p-20 10xs:p-5 w-screen justify-center items-center bg-black">
-        <div className="login flex justify-around h-[670px] lg:flex-row 10xs:flex-col xxs:h-[830px] items-center lg:h-[400px] w-[800px] rounded-lg bg-[#1c1816]">
+        <div className="login flex justify-around h-[670px] lg:flex-row 13xs:flex-col xxs:h-[830px] items-center lg:h-[400px] w-[800px] rounded-lg bg-[#1c1816]">
           <div className="image flex items-center">
             <Link
               href="/"
