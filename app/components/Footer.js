@@ -22,7 +22,7 @@ const footer=()=>{
                     <Link href="/admin/dashboard" class="hover:underline me-4 md:me-6">Admin</Link>
                 </li>
                 <li>
-                    <Link href="/contact" class="hover:underline">Contact</Link>
+                    <Link href="/contact-us" class="hover:underline">Contact</Link>
                 </li>
             </ul>
         </div>
