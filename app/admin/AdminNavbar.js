@@ -172,7 +172,7 @@ const PrinNavbar = () => {
                 
               <li>
                   <Link
-                    href="/admin/dashboard"
+                    href="/admin/feedbacks"
                     className="flex items-center py-2 px-3 md:p-0 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-200 md:dark:hover:text-yellow-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 transition-colors duration-300"
                   >
                     <MessageSquare className="mr-2" />
