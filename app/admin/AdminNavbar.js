@@ -60,6 +60,7 @@ import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import Link from 'next/link'
 import { FaUser, FaKey, FaSignOutAlt, FaBars, FaHome, FaUsers, FaBullhorn } from "react-icons/fa";
+import { ClipboardList } from "lucide-react";
 import { useContext } from "react"
 import { MessageSquare } from "lucide-react";
 import {AuthContext} from '../AuthContext'
@@ -154,7 +155,7 @@ const PrinNavbar = () => {
                     className="flex items-center py-2 px-3 md:p-0 text-white md:hover:text-yellow-200 bg-blue-700 rounded-sm md:bg-transparent md:dark:text-blue-500 transition-colors duration-300"
                     aria-current="page"
                   >
-                    <FaBullhorn className="mr-2" />
+                    <ClipboardList className="mr-2" />
                    Orders
                   </Link>
                 </li>
