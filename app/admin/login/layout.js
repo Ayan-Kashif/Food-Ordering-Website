@@ -1,5 +1,5 @@
 // app/admin/panel/layout.js (Custom layout for the Admin Panel)
-import AdminNavbar from "../panel/AdminNavbar";
+import AdminNavbar from "../AdminNavbar";
 export default function AdminPanelLayout({ children }) {
     return (
       <>
