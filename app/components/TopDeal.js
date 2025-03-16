@@ -10,9 +10,9 @@ const TopDeal = () => {
 
             {/* Scrollable container */}
             <div className="flex gap-3 lg:gap-10 pb-8 ">
-                <TopDealCard id="1" name="Family Festival " price="320" src="https://www.kfcpakistan.com/images/63fb28b0-9627-11ef-be4f-a734b6b6ba4f-stacker-combo-2024-10-29185539.png" description="An ultimate meal for the fam. It includes 4 Zinger burgers + 4" />
-                <TopDealCard id="2" name="Zinger Combo" price="315" src="https://www.kfcpakistan.com/images/63fb28b0-9627-11ef-be4f-a734b6b6ba4f-stacker-combo-2024-10-29185539.png" description="An ultimate meal for the fam. It includes 4 Zinger burgers + 4  It includes 4 Zinger burgers + 4It includes 4 Zinger burgers + 4" />
-                <TopDealCard id="3" name="Snackable Trio" price="250" src="https://www.kfcpakistan.com/images/63fb28b0-9627-11ef-be4f-a734b6b6ba4f-stacker-combo-2024-10-29185539.png" description="An ultimate meal for the fam. It includes 4 Zinger burgers + 4" />
+                <TopDealCard id="1" name="Family Festival " price="320" src="deal.png" description="An ultimate meal for the fam. It includes 4 Zinger burgers + 4" />
+                <TopDealCard id="2" name="Zinger Combo" price="315" src="deal.png" description="An ultimate meal for the fam. It includes 4 Zinger burgers + 4  It includes 4 Zinger burgers + 4It includes 4 Zinger burgers + 4" />
+                <TopDealCard id="3" name="Snackable Trio" price="250" src="deal.png" description="An ultimate meal for the fam. It includes 4 Zinger burgers + 4" />
 
             </div>
         </div>
