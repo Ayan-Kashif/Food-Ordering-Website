@@ -21,6 +21,7 @@ module.exports = {
         
         "11xs":"0px",
         "12xs":"370px",
+        '13xs':'300px',
         "10xs":"380px",
         "9xs":"390px",
         "8xs":"400px",
