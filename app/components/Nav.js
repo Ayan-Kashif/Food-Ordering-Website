@@ -117,6 +117,7 @@ const Nav = () => {
     const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext)
     // State to control navbar visibility
     const [isOpen, setIsOpen] = useState(false);
+       const [userData, setUserData] = useState({})
     const [isPopupVisible, setIsPopupVisible] = useState(false); // State to manage popup 
     const data = localStorage.getItem("userData")
     const userData = JSON.parse(data)
@@ -137,7 +138,11 @@ const Nav = () => {
         };
     }, [isPopupVisible]);
 
-
+   useEffect(()=>{
+        const data = localStorage.getItem("userData")
+        const info= JSON.parse(data)
+        setUserData(info)
+    })
     // const toggleNavbar = () => {
     //        console.log("toggling")
     //        const navbar = document.querySelector("nav")
