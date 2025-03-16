@@ -58,9 +58,10 @@
 import React,{useState} from "react";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
+import Link from 'next/link'
 import { FaUser, FaKey, FaSignOutAlt, FaBars, FaHome, FaUsers, FaBullhorn } from "react-icons/fa";
 import { useContext } from "react"
-
+import { MessageSquare } from "lucide-react";
 import {AuthContext} from '../AuthContext'
 const PrinNavbar = () => {
   const router = useRouter();
@@ -137,45 +138,45 @@ const PrinNavbar = () => {
 
 
               <li>
-                  <a
+                  <Link
                     href="/admin/dashboard"
                     className="flex items-center py-2 px-3 md:p-0 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-200 md:dark:hover:text-yellow-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 transition-colors duration-300"
                   >
                     <FaHome className="mr-2" />
                     Dashboard
-                  </a>
+                  </Link>
                 </li>
 
                 
                 <li>
-                  <a
+                  <Link
                     href="/admin/panel"
                     className="flex items-center py-2 px-3 md:p-0 text-white md:hover:text-yellow-200 bg-blue-700 rounded-sm md:bg-transparent md:dark:text-blue-500 transition-colors duration-300"
                     aria-current="page"
                   >
                     <FaBullhorn className="mr-2" />
                    Orders
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/admin/users"
                     className="flex items-center py-2 px-3 md:p-0 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-200 md:dark:hover:text-yellow-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 transition-colors duration-300"
                   >
                     <FaUsers className="mr-2" />
                     Users
-                  </a>
+                  </Link>
                 </li>
 
                 
               <li>
-                  <a
+                  <Link
                     href="/admin/dashboard"
                     className="flex items-center py-2 px-3 md:p-0 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-200 md:dark:hover:text-yellow-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 transition-colors duration-300"
                   >
-                    <FaHome className="mr-2" />
+                    <MessageSquare className="mr-2" />
                   Feedbacks
-                  </a>
+                  </Link>
                 </li>
                
               </ul>
