@@ -201,7 +201,7 @@ import Spinner from '../components/Spinner';
 
 const Bucket = () => {
 
-  const { bucketItems, setBucketItems, userID, totalItems, setTotalItems, isLoggedin } = useContext(AuthContext);
+  const { bucketItems, setBucketItems, userID, totalItems, setTotalItems, isLoggedIn } = useContext(AuthContext);
   // Track input for alternate phone number and special instructions
   const [alternatePhone, setAlternatePhone] = useState("");
   const [instructions, setInstructions] = useState("");
@@ -753,7 +753,7 @@ const Bucket = () => {
           <h1 className='text-[22px] font-bold font-roboto-condensed text-white'>Checkout</h1>
           <div onClick={() => {
             console.log(bucketItems.length)
-            if (!isLoggedin) {
+            if (!isLoggedIn) {
               toast.error("Signin to place order")
               return
             }
