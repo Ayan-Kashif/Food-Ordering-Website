@@ -639,7 +639,7 @@ const Bucket = () => {
 
         {
 
-          showPopup && userData.name && userData.email && userData.phone && userData.address && bucketItems &&
+          showPopup && userData?.name && userData?.email && userData?.phone && userData?.address && bucketItems &&
           (
             <div className="popup-overlay absolute top-0 left-0 w-full min-h-screen bg-white bg-opacity-40 flex justify-center items-center">
               <div className="popup bg-[#1c1816] z-[1000000] shadow-lg mt-20 px-8 py-5 w-[450px] h-auto rounded-lg relative">
